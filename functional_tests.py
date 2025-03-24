@@ -9,7 +9,7 @@ import unittest
 # browser.quit()
 
 
-class NewVisitorTest(unittest.TestCase()):
+class NewVisitorTest(unittest.TestCase):
     def setUp(self):
         self.browser = webdriver.Chrome()
 
