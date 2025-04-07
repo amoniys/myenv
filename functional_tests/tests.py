@@ -3,6 +3,7 @@ import unittest
 from selenium.webdriver.common.keys import Keys
 import time
 from selenium.webdriver.common.by import By
+from django.test import LiveServerTestCase
 
 # browser = webdriver.Chrome()
 # browser.get("http://localhost:8000")
@@ -10,8 +11,7 @@ from selenium.webdriver.common.by import By
 # assert "To-Do" in browser.title
 # browser.quit()
 
-
-class NewVisitorTest(unittest.TestCase):
+class NewVisitorTest(LiveServerTestCase):
     def setUp(self):
         self.browser = webdriver.Chrome()
 
@@ -27,7 +27,7 @@ class NewVisitorTest(unittest.TestCase):
 
         #张三听说有一个在线待办事项的应用
         #他去看了这个应用的首页
-        self.browser.get('http://localhost:8000')
+        self.browser.get(self.live_server_url)
 
         #他注意到网页的标题和头部都包含“To-Do”这个词
         self.assertIn('To-Do', self.browser.title)
@@ -65,6 +65,3 @@ class NewVisitorTest(unittest.TestCase):
         #他看到王章为他生成了一个唯一的URL
         self.fail('Finish the test!')
 
-
-if __name__ == "__main__":
-    unittest.main()
